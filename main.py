@@ -18,6 +18,12 @@ app.add_middleware(
 def greet():
     return "Welcome to All Time India's Best Team Selection"
 
+
+@app.head("/")
+async def head_root():
+    return {} 
+
+
 Test_Score=pd.read_csv('Datasets/Test_Scores.csv')
 
 
