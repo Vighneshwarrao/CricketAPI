@@ -14,14 +14,10 @@ app.add_middleware(
     allow_headers=["*"],  
 )
 
-@app.get('/')
-def greet():
-    return "Welcome to All Time India's Best Team Selection"
-
-
-@app.head("/")
-async def head_root():
-    return {} 
+@app.api_route("/", methods=["GET", "HEAD"], include_in_schema=False)
+def hello():
+    # GET returns JSON body; HEAD will get the same status + headers but no body (server handles it)
+    return {"message": "Hello World !", "status": "ok"}
 
 
 Test_Score=pd.read_csv('Datasets/Test_Scores.csv')
